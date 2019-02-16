@@ -1,0 +1,109 @@
+2019-02-08 12:18:24,433 ERROR: Exception on /login [GET] [in /home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/kiborgok/parrotSc/mmu/app/routes.py", line 69, in login
+    return render_template('login.html', title='Sign In', form=form)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/kiborgok/parrotSc/mmu/app/templates/login.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/kiborgok/parrotSc/mmu/app/templates/base.html", line 32, in top-level template code
+    {% block scripts %}
+  File "/home/kiborgok/parrotSc/mmu/app/templates/base.html", line 33, in block "scripts"
+    {{ super() }}
+jinja2.exceptions.UndefinedError: there is no parent block called 'scripts'.
+2019-02-08 12:18:26,990 ERROR: Exception on /login [GET] [in /home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/kiborgok/parrotSc/mmu/app/routes.py", line 69, in login
+    return render_template('login.html', title='Sign In', form=form)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/kiborgok/parrotSc/mmu/app/templates/login.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/kiborgok/parrotSc/mmu/app/templates/base.html", line 32, in top-level template code
+    {% block scripts %}
+  File "/home/kiborgok/parrotSc/mmu/app/templates/base.html", line 33, in block "scripts"
+    {{ super() }}
+jinja2.exceptions.UndefinedError: there is no parent block called 'scripts'.
+2019-02-08 12:19:07,294 INFO: MMUblog startup [in /home/kiborgok/parrotSc/mmu/app/__init__.py:49]
+2019-02-08 12:21:24,146 INFO: MMUblog startup [in /home/kiborgok/parrotSc/mmu/app/__init__.py:49]
+2019-02-08 12:21:29,367 ERROR: Exception on /explore [GET] [in /home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/kiborgok/parrotSc/mmu/venv/src/flask-login/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/kiborgok/parrotSc/mmu/app/routes.py", line 38, in explore
+    return render_template("index.html", title='Explore', posts=posts.items, next_url=next_url, prev_url=prev_url)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kiborgok/parrotSc/mmu/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/kiborgok/parrotSc/mmu/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/kiborgok/parrotSc/mmu/app/templates/base.html", line 36, in top-level template code
+    {% block scripts %}
+  File "/home/kiborgok/parrotSc/mmu/app/templates/base.html", line 37, in block "scripts"
+    {{ super() }}
+jinja2.exceptions.UndefinedError: there is no parent block called 'scripts'.
