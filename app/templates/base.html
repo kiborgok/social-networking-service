@@ -1,4 +1,9 @@
 {% extends 'bootstrap/base.html' %}
+{% block head %}
+{{ super() }}
+    
+    <link rel="icon" sizes="48x48" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon">
+{% endblock %}
 
 {% block title %}
     {% if title %}{{ title }} - MMU{% else %}{{ _('Welcome to MMUblog') }}{% endif %}
