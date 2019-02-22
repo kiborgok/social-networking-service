@@ -1,7 +1,7 @@
 {% extends 'bootstrap/base.html' %}
 {% block head %}
 {{ super() }}
-    
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" sizes="48x48" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon">
 {% endblock %}
 
@@ -72,6 +72,9 @@
         {# application content needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
     </div>
+{% endblock %}
+{% block footer %}
+    {% if footer %}{{ footer }}<div class="footer"><p>Copyright @2019</p></div>{% endif %}
 {% endblock %}
 
 {% block scripts %}

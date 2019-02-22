@@ -11,6 +11,16 @@ from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 from config import Config
 from elasticsearch import Elasticsearch
+from flask_admin.contrib.sqla import ModelView
+from flask_admin import Admin
+
+class UserModelView(ModelView):
+    column_auto_select_related = True
+    create_modal = True
+    edit_modal = True
+    can_export = True
+
+
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -21,6 +31,7 @@ mail = Mail()
 bootstrap = Bootstrap()
 moment = Moment()
 babel = Babel()
+admin = Admin(template_mode='bootstrap3')
 
 
 def create_app(config_class=Config):
@@ -36,6 +47,14 @@ def create_app(config_class=Config):
     babel.init_app(app)
     app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
         if app.config['ELASTICSEARCH_URL'] else None
+    app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
+
+    from app.models import User, Post, Message, Notification
+    admin.init_app(app)
+    admin.add_view(UserModelView(User, db.session))
+    admin.add_view(UserModelView(Post, db.session))
+    admin.add_view(UserModelView(Message, db.session))
+    admin.add_view(UserModelView(Notification, db.session))
 
 
     from app.errors import errors_bp
@@ -86,6 +105,5 @@ def create_app(config_class=Config):
 @babel.localeselector
 def get_locale():
     return request.accept_languages.best_match(current_app.config['LANGUAGES'])
-
 
 from app import models
