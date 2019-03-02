@@ -10,8 +10,8 @@
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-inverse">
-        <div class="container">
+    <nav class="navbar navbar-dark bg-info">
+        <div>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -71,10 +71,14 @@
 
         {# application content needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
+
+        {# footer #}
     </div>
-{% endblock %}
-{% block footer %}
-    {% if footer %}{{ footer }}<div class="footer"><p>Copyright @2019</p></div>{% endif %}
+        <div id="footer">
+            {% block footer %}
+                <p>&copy; Copyright 2019 by kiborgok.</p>
+            {% endblock %}
+        </div>
 {% endblock %}
 
 {% block scripts %}

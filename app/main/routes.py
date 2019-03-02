@@ -5,8 +5,8 @@ from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from guess_language import guess_language
 from app import db
-from app.main.forms import EditProfileForm, PostForm, SearchForm, MessageForm
-from app.models import User, Post, Message, Notification
+from app.main.forms import EditProfileForm, PostForm, SearchForm, MessageForm, CommentForm
+from app.models import User, Post, Message, Notification, Comment
 from app.translate import translate
 from app.main import main_bp
 
@@ -29,8 +29,7 @@ def index():
         language = guess_language(form.post.data)
         if language == 'UNKNOWN' or len(language) > 5:
             language = ''
-        post = Post(body=form.post.data, author=current_user,
-                    language=language)
+        post = Post(body=form.post.data, author=current_user, language=language)
         db.session.add(post)
         db.session.commit()
         flash(_('Your post is now live!'))
@@ -210,3 +209,17 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
+
+    
+@main_bp.route('/post/<int:id>', methods=['GET', 'POST'])
+@login_required
+def post(id):
+    post = Post.query.get_or_404(id)
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(body=form.body.data, post=post, author=current_user)
+        db.session.add(comment)
+        db.session.commit()
+        flash('Your comment has been published.')
+        return redirect(url_for('main.index', id=post.id))
+    return render_template('post.html', posts=[post], form=form)

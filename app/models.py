@@ -7,7 +7,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 from app import db, login
 from app.search import add_to_index, remove_from_index, query_index
-import json
+import json, bleach
+from markdown import markdown
 
 
 class SearchableMixin(object):
@@ -68,8 +69,7 @@ class User(UserMixin, db.Model):
     posts = db.relationship('Post', cascade='all, delete', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
-    followed = db.relationship(
-        'User', secondary=followers,
+    followed = db.relationship('User', secondary=followers,
         primaryjoin=(followers.c.follower_id == id),
         secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
@@ -77,7 +77,7 @@ class User(UserMixin, db.Model):
     messages_received = db.relationship('Message', cascade='all, delete', foreign_keys='Message.recipient_id', backref='recipient', lazy='dynamic')
     last_message_read_time = db.Column(db.DateTime)
     notifications = db.relationship('Notification', cascade='all, delete', backref='user', lazy='dynamic')
-
+    comments = db.relationship('Comment', cascade='all, delete', backref='author', lazy='dynamic')
 
     def new_messages(self):
         last_read_time = self.last_message_read_time or datetime(1900, 1, 1)
@@ -152,6 +152,7 @@ class Post(SearchableMixin, db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     language = db.Column(db.String(5))
+    comments = db.relationship('Comment', cascade='all, delete', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
@@ -177,3 +178,27 @@ class Notification(db.Model):
 
     def get_data(self):
         return json.loads(str(self.payload_json))
+
+
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(140))
+    body_html = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    disabled = db.Column(db.Boolean)
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id', ondelete='CASCADE'))
+
+    def __repr__(self):
+        return f"Comment('{self.body}')"
+
+
+    @staticmethod
+    def on_changed_body(target, value, oldvalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'code', 'em', 'i', 'strong']
+        target.body_html = bleach.linkify(bleach.clean(
+        markdown(value, output_format='html'),
+        tags=allowed_tags, strip=True))
+
+db.event.listen(Comment.body, 'set', Comment.on_changed_body)

@@ -49,12 +49,13 @@ def create_app(config_class=Config):
         if app.config['ELASTICSEARCH_URL'] else None
     app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
-    from app.models import User, Post, Message, Notification
+    from app.models import User, Post, Message, Notification, Comment
     admin.init_app(app)
     admin.add_view(UserModelView(User, db.session))
     admin.add_view(UserModelView(Post, db.session))
     admin.add_view(UserModelView(Message, db.session))
     admin.add_view(UserModelView(Notification, db.session))
+    admin.add_view(UserModelView(Comment, db.session))
 
 
     from app.errors import errors_bp

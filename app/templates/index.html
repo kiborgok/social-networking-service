@@ -8,7 +8,14 @@
     <br>
     {% endif %}
     {% for post in posts %}
-        {% include '_post.html' %}
+        {% include '_post.html' %}  
+
+    {% for comment in post.comments %}
+        {% include '_comments.html' %}
+    {% endfor %}
+    <a href="{{ url_for('main.post', id=post.id) }}" >
+        <span class="label label-info">{{ post.comments.count() }} Comments</span>
+    </a>
     {% endfor %}
     <nav aria-label="...">
         <ul class="pager">

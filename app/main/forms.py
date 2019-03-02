@@ -40,3 +40,7 @@ class SearchForm(FlaskForm):
 class MessageForm(FlaskForm):
     message = TextAreaField(_l('Message'), validators=[DataRequired(), Length(min=0, max=140)])
     submit = SubmitField(_l('Submit'))
+
+class CommentForm(FlaskForm):
+    body = StringField(_l('Enter comment'), validators=[DataRequired()], id='comment-area')
+    submit = SubmitField(_l('Submit'))
