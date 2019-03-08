@@ -1,4 +1,4 @@
-<div class="posts-table">
+
     <table class="table table-hover">
         <tr>
             <td width="70px">
@@ -17,8 +17,8 @@
                  {{ _('<span class="post">%(username)s</span> <span class="comment">said %(when)s</span>',
                     username=user_link, when=moment(post.timestamp).fromNow()) }}
                 <br>
-                <span id="post{{ post.id }}">{{ post.body }}</span>
+                <span class="post" id="post{{ post.id }}">{{ post.body }}</span>
             </td>
         </tr>
     </table>
-</div>
+

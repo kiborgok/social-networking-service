@@ -78,7 +78,7 @@ def create_app(config_class=Config):
                 secure = ()
             mail_handler = SMTPHandler(
                 mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
-                fromaddr='no-reply@' + app.config['MAIL_SERVER'],
+                fromaddr='borgokalek14@gmail.com' + app.config['MAIL_SERVER'],
                 toaddrs=app.config['ADMINS'], subject='MMUblog Failure',
                 credentials=auth, secure=secure)
             mail_handler.setLevel(logging.ERROR)

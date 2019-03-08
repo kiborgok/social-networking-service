@@ -6,11 +6,11 @@
 {% endblock %}
 
 {% block title %}
-    {% if title %}{{ title }} - MMU{% else %}{{ _('Welcome to MMUblog') }}{% endif %}
+    {% if title %}{{ title }} - Talk-To-Me{% else %}{{ _('Welcome to MMUblog') }}{% endif %}
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-dark bg-info">
+    <nav class="navbar navbar-light bg-info">
         <div>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url_for('main.index') }}">MMU</a>
+                <a class="navbar-brand" href="{{ url_for('main.index') }}">Talk-To-Me</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">

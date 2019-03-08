@@ -5,11 +5,22 @@ padding: 0;
 
 html, body{
     height: 100%;
+    background-color: lightsteelblue;
+}
+
+.navbar{
+    margin: 0px;
+}
+
+.bg-info{
+    background-color: lightblue;
 }
 
 .container{
     min-height: 100%;
     text-align: -webkit-center;
+    width: 550px;
+    background-color: aliceblue;
 }
 
 form {
@@ -30,16 +41,15 @@ h1{
     color: #31708f;
     background-color: #d9edf7;
     border-color: #bce8f1;
-    max-width: 38%;
-}
-.comments{
-    padding-left: 60px;
-    padding-right: 450px;
+    max-width: 40%;
 }
 
-.posts-table{
-    padding-right: 320px;
+.table{
+    width: 500px;
+    margin-bottom: 15px;
+    border-radius: 10px;
 }
+
 
 div.container > a {
     padding-left: inherit;
@@ -47,7 +57,7 @@ div.container > a {
 
 #footer{
     min-height: 50px;
-    background-color: powderblue;
+    background-color: lightblue;
     display: flex;
     padding: 0 0.5rem;
     bottom: 0;
@@ -66,5 +76,14 @@ div.container > a {
 
 .post{
     font-family: serif;
-    font-size: 1.5em;
+    font-size: 1.2em;
+}
+
+.comment-body{
+    font-family: serif;
+    font-size: 1em;   
+}
+
+.next-page{
+    width: 500px;
 }
