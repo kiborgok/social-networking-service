@@ -41,7 +41,10 @@ h1{
     color: #31708f;
     background-color: #d9edf7;
     border-color: #bce8f1;
-    max-width: 40%;
+}
+
+.alert{
+    margin-top: 15px;
 }
 
 .table{
@@ -86,4 +89,8 @@ div.container > a {
 
 .next-page{
     width: 500px;
+}
+
+.btn-default{
+    background-color: skyblue;
 }
