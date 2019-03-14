@@ -78,7 +78,7 @@ def create_app(config_class=Config):
                 secure = ()
             mail_handler = SMTPHandler(
                 mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
-                fromaddr='borgokalek14@gmail.com' + app.config['MAIL_SERVER'],
+                fromaddr='alexvanellope@gmail.com' + app.config['MAIL_SERVER'],
                 toaddrs=app.config['ADMINS'], subject='MMUblog Failure',
                 credentials=auth, secure=secure)
             mail_handler.setLevel(logging.ERROR)
@@ -101,10 +101,5 @@ def create_app(config_class=Config):
             app.logger.info('MMUblog startup')
 
     return app
-
-
-@babel.localeselector
-def get_locale():
-    return request.accept_languages.best_match(current_app.config['LANGUAGES'])
 
 from app import models

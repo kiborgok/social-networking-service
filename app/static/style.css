@@ -1,19 +1,30 @@
 *{
 margin: 0;
 padding: 0;
+font-family: serif;
+box-sizing: border-box;
 }
 
 html, body{
     height: 100%;
-    background-color: lightsteelblue;
+    background-color: white;
+    padding-top: 26px;
 }
 
 .navbar{
     margin: 0px;
 }
 
+.icon-bar{
+    background-color: aliceblue;
+}
+
 .bg-info{
     background-color: lightblue;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
 }
 
 .container{
@@ -21,6 +32,7 @@ html, body{
     text-align: -webkit-center;
     width: 550px;
     background-color: aliceblue;
+    border-radius: 20px;
 }
 
 form {
@@ -78,12 +90,10 @@ div.container > a {
 }
 
 .post{
-    font-family: serif;
     font-size: 1.2em;
 }
 
 .comment-body{
-    font-family: serif;
     font-size: 1em;   
 }
 

@@ -11,8 +11,7 @@ import redis
 import rq
 from app import db, login
 from app.search import add_to_index, remove_from_index, query_index
-import json, bleach
-from markdown import markdown
+import json
 
 
 
@@ -100,8 +99,7 @@ class User(UserMixin, db.Model):
 
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
-        return 'https://www.gravatar.com/avatar/{}?d=monsterid&s={}'.format(
-            digest, size)
+        return 'https://www.gravatar.com/avatar/{}?d=monsterid&s={}'.format(digest, size)
 
     def follow(self, user):
         if not self.is_following(user):
@@ -156,7 +154,6 @@ class Post(SearchableMixin, db.Model):
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    language = db.Column(db.String(5))
     comments = db.relationship('Comment', cascade='all, delete', backref='post', lazy='dynamic')
 
     def __repr__(self):
@@ -189,21 +186,10 @@ class Notification(db.Model):
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
-    body_html = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    disabled = db.Column(db.Boolean)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'))
     post_id = db.Column(db.Integer, db.ForeignKey('post.id', ondelete='CASCADE'))
 
     def __repr__(self):
         return f"Comment('{self.body}')"
 
-
-    @staticmethod
-    def on_changed_body(target, value, oldvalue, initiator):
-        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'code', 'em', 'i', 'strong']
-        target.body_html = bleach.linkify(bleach.clean(
-        markdown(value, output_format='html'),
-        tags=allowed_tags, strip=True))
-
-db.event.listen(Comment.body, 'set', Comment.on_changed_body)
