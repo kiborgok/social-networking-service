@@ -16,7 +16,7 @@ class Config(object):
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['alexvanellope@gmail.com']
-    POSTS_PER_PAGE = 5
+    POSTS_PER_PAGE = 10
     ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
     FLASK_ADMIN_SWATCH = 'cerulean'

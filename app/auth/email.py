@@ -5,7 +5,7 @@ from app.email import send_email
 
 def send_password_reset_email(user):
     token = user.get_reset_password_token()
-    send_email(_('From [Talk-To-Me] Password Reset'),
+    send_email(_('From [Talk-To-Me]: Reset Your Password'),
                sender=current_app.config['ADMINS'][0],
                recipients=[user.email],
                body=render_template('email/reset_password.html', user=user, token=token),

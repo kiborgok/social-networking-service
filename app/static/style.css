@@ -104,3 +104,8 @@ div.container > a {
 .btn-default{
     background-color: skyblue;
 }
+
+.error{
+    color: red;
+    font-style: italic;
+}
