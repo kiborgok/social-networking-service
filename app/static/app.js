@@ -63,6 +63,7 @@ password.addEventListener('blur', () => {
     }
 });
 
+/*
 function validate(){
     
     if(username.value == ""){
@@ -113,3 +114,5 @@ function validate(){
     }
 
 };
+
+*/
