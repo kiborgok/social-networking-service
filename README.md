@@ -1,2 +1,2 @@
 # social-networking-service
-Online social networking site enables you message, post and comment.
+Online social networking site enables you to message, post and comment
